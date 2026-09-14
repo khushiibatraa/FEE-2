@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 60%;
+            height: 400px;
+            border: 2px solid red;
+            display: flex; /*by default horizontal(row dirn) main axis is x and cross is y*/
+            /*flex-direction: column-reverse;*/ /*now main and cross axis swap*/
+            justify-content: center; /* justify content is applicable on main axis*/
+            align-items: flex-start; /*applicable on cross axis*/
+            flex-wrap: wrap;
+            gap: 10px;        
+        }
+        .childbox{
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            /* margin: 10px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="childbox">1</div>
+        <div class="childbox">2</div>
+        <div class="childbox">3</div>
+        <div class="childbox">4</div>
+        <div class="childbox">5</div>
+    </div>
+</body>
+</html>

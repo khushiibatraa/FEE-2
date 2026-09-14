@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather App</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+    font-size:16px;
+    color:white;
+}
+h1{
+    font-size:30px;
+    font-weight:bold;
+    font-family:Arial,sans-serif;
+    font-size:30px;
+    border-radius: 10px;
+    box-shadow:0 0 10px rgba(255,255,255,0.5);
+
+}
+
+body{
+    background: radial-gradient(circle, #0f0f0f, #5d5c5b);
+    height:100vh;
+    align-items:center;
+}
+
+.container{
+    width:360px;
+    background:rgba(255, 255, 255, 0.236);
+    padding:25px;
+    margin:50px auto;
+
+    border-radius:15px;
+    text-align:center;
+    align-items:center;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+input{
+    width:70%;
+    background-color: #5756526f;
+    padding:10px;
+    border:1px solid gray;
+    border-radius:5px;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    background:#eca306f1;
+    box-shadow:0 0 10px rgba(236, 148, 7, 0.554);
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#846307;
+}
+
+#result{
+    margin-top:20px;
+}
+
+p{
+    margin:8px 0;
+    font-size:18px;
+}
+nav{
+     display: flex;
+            justify-content:space-between;
+            align-items: center;
+            padding: 25px 10px;
+        
+            width: 100%;
+            height: 30px;
+            font-weight: bold;
+
+            background-color: rgba(88, 81, 81, 0.216);
+            box-shadow: 0 2px 4px rgba(63, 62, 62, 0.968);
+}
+</style>
+
+</head>
+<body>
+    <nav>
+        <h1>Weather App  🌥️</h1>
+        <div>
+            <p>Enter a city name to get the current weather information.</p>
+        </div>
+    </nav>
+
+<div class="container">
+
+<h1>Weather App</h1>
+
+<input type="text" id="city" placeholder="Enter City">
+
+<button onclick="getWeather()">Search</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+async function getWeather(){
+
+    let city=document.getElementById("city").value.trim();
+
+    if(city===""){
+        alert("Enter a city name");
+        return;
+    }
+
+    try{
+
+        let geoResponse=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`);
+
+        let geoData=await geoResponse.json();
+
+        if(!geoData.results){
+            document.getElementById("result").innerHTML="<h3>City Not Found</h3>";
+            return;
+        }
+
+        let latitude=geoData.results[0].latitude;
+        let longitude=geoData.results[0].longitude;
+        let cityName=geoData.results[0].name;
+        let country=geoData.results[0].country;
+
+        let weatherResponse=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`);
+
+        let weatherData=await weatherResponse.json();
+
+        let code=weatherData.current.weather_code;
+
+        let weather="";
+
+        if(code==0){
+            weather="Clear Sky";
+        }
+        else if(code<=3){
+            weather="Cloudy";
+        }
+        else if(code<=67){
+            weather="Rain";
+        }
+        else if(code<=77){
+            weather="Snow";
+        }
+        else{
+            weather="Storm";
+        }
+
+        document.getElementById("result").innerHTML=`
+        <h2>${cityName}, ${country}</h2>
+
+        <p><b>Temperature:</b> ${weatherData.current.temperature_2m} °C</p>
+
+        <p><b>Weather:</b> ${weather}</p>
+
+        <p><b>Humidity:</b> ${weatherData.current.relative_humidity_2m}%</p>
+
+        <p><b>Wind Speed:</b> ${weatherData.current.wind_speed_10m} km/h</p>
+        `;
+
+    }
+
+    catch(error){
+
+        document.getElementById("result").innerHTML="<h3>Something went wrong</h3>";
+
+        console.log(error);
+
+    }
+
+}
+
+document.getElementById("city").addEventListener("keypress",function(event){
+
+    if(event.key==="Enter"){
+        getWeather();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

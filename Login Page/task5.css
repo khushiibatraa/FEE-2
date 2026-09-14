@@ -1,0 +1,132 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+}
+body{
+    background: #ee9ca7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffdde1, #ee9ca7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 200vh;
+
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 0.6rem 0.6rem;
+    background: #bc4e9c;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f80759, #bc4e9c);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f80759, #bc4e9c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position: sticky;
+    top: 0px;
+
+}
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    gap: 1rem;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: yellow;
+}
+.notification{
+    position: relative;
+    font-size: 1.5rem;
+}
+.number{
+    font-size: 0.8rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: red;
+    border-radius: 50%;/*for circle*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.login-card{
+    width: 20rem;
+    height: 25rem;
+    margin-top: 4rem;
+    background: #bc4e9c;
+    background: -webkit-linear-gradient(to right, #f80759, #bc4e9c);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f80759, #bc4e9c);
+    /* box-shadow: ; */
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    position: relative;
+    
+
+}
+
+
+
+ h1{
+    color: white;
+    margin-top: 3rem;
+    
+ }
+
+ .input{
+    margin: 0.5rem;
+    border-radius: 3px;
+    border: none;
+    height: 1.5rem;
+    width: 12rem;
+ }
+
+ button {
+    height: 2rem;
+    width: 12rem;
+    margin: 0.7rem;
+    color: white;
+    background-color: violet;
+    border: none;
+    border-radius: 0.5rem;
+ }
+
+ .cross{
+    position: absolute;
+    left:290px;
+    top:10px;
+ }
+
+ .sign{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    position: relative;
+ }
+ .ques{
+    position: absolute;
+    top: 3.3rem;
+    left: 11rem;
+ }
+ /* .sign p{
+    opacity: 0;
+ } */
