@@ -1,33 +1,33 @@
-# ShopEase - Mini E-Commerce Application
+# ShopEase — Minimal E-Commerce Application
 
-ShopEase is a lightweight, responsive mini e-commerce web application built using **React (Vite)**, **Redux Toolkit**, and **React Router DOM v6**. This project was developed as a B.E. Computer Science and Engineering (CSE) frontend development mini-project to demonstrate a strong foundational understanding of modern React component architecture, centralized state management with Redux Toolkit, client-side routing, and browser storage persistence.
+ShopEase is a clean, minimal e-commerce web application built using **React (Vite)**, **Redux Toolkit**, and **React Router DOM v6**. This project was developed as a B.E. Computer Science and Engineering (CSE) frontend development mini-project to demonstrate a strong foundational understanding of modern React component architecture, centralized state management with Redux Toolkit, client-side routing, and browser storage persistence.
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **React 18**: Functional components, React Hooks (`useState`, `useEffect`, `useNavigate`).
 - **Redux Toolkit (RTK)**: Centralized state management using `configureStore` and `createSlice`.
 - **React Redux**: Connecting React components to the store using `useSelector` and `useDispatch`.
 - **React Router DOM v6**: Declarative multi-page client-side routing (`Routes`, `Route`, `Link`, `NavLink`, `useNavigate`).
 - **Vite**: Next-generation frontend build tooling and development server.
-- **CSS3**: Custom, responsive styling without heavyweight external UI frameworks.
+- **CSS3 & Plus Jakarta Sans**: Custom, humanized styling with geometric edges, crisp typography, and responsive layouts.
 - **HTML5 & Web Storage API**: Persistent cart data saved directly to the browser's `localStorage`.
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
 1. **Home Page (`/`)**:
-   - Clean welcome hero banner introducing the store.
-   - Quick navigation buttons to explore products or view the shopping cart.
-   - Informative value cards highlighting store features.
+   - Editorial hero banner introducing the store collection.
+   - Quick navigation buttons to explore products or review the shopping bag.
+   - Minimalist feature cards highlighting store standards.
 
 2. **Product Catalog (`/products`)**:
    - Displays 10 diverse products across multiple categories (Electronics, Footwear, Accessories, Clothing).
-   - Real-time product search by name.
+   - Real-time product search by name with inline search icon.
    - Dropdown filtering by product category.
-   - Instant "Add to Cart" action with a temporary confirmation message banner.
+   - Instant "Add to Bag" action with a temporary confirmation message banner.
 
 3. **Shopping Cart (`/cart`)**:
    - Detailed list of selected items with images, unit prices, and quantities.
@@ -35,7 +35,7 @@ ShopEase is a lightweight, responsive mini e-commerce web application built usin
    - Real-time subtotal calculation for each individual product.
    - Auto-updating grand total cart price.
    - Individual product removal and "Clear Cart" button.
-   - Informative empty cart state with direct link to start shopping.
+   - Informative empty cart state with SVG icon and direct link to start shopping.
 
 4. **Checkout Simulation (`/checkout`)**:
    - Comprehensive order summary detailing items, quantities, and totals.
@@ -58,7 +58,7 @@ ShopEase is a lightweight, responsive mini e-commerce web application built usin
 
 ---
 
-## 📁 Project Folder Structure
+## Project Folder Structure
 
 ```text
 E-Commerce/
@@ -90,7 +90,7 @@ E-Commerce/
 
 ---
 
-## ⚙️ Installation and Setup
+## Installation and Setup
 
 ### Prerequisites
 - Node.js (version 18 or higher recommended)
@@ -129,7 +129,7 @@ npm run preview
 
 ---
 
-## 🧠 Redux Toolkit Implementation Details
+## Redux Toolkit Implementation Details
 
 Redux Toolkit was utilized to manage the shopping cart state globally without prop drilling:
 
@@ -152,7 +152,7 @@ Redux Toolkit was utilized to manage the shopping cart state globally without pr
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 *(Replace placeholders with actual project screenshots for academic submission)*
 
@@ -173,12 +173,12 @@ Redux Toolkit was utilized to manage the shopping cart state globally without pr
 
 ---
 
-## 🎓 Academic Evaluation Checklist
+## Academic Evaluation Checklist
 
 - [x] Initialized with standard Vite React without unnecessary bloat.
 - [x] Functional components with hooks (`useState`, `useEffect`, `useNavigate`).
 - [x] Declarative routing with `react-router-dom` v6 (`Routes`, `Route`, `Link`, `NavLink`).
 - [x] Redux Toolkit slice and store properly configured.
 - [x] Cart persistent across browser refreshes via `localStorage`.
-- [x] Clean, well-structured, student-friendly code with readable logic.
+- [x] Humanized styling, geometric sharp edges, premium typography (`Plus Jakarta Sans`), zero emojis.
 - [x] Tested production build passes with zero errors.

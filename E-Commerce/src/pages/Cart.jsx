@@ -23,11 +23,26 @@ function Cart() {
     return (
       <div className="cart-page empty-cart-container">
         <div className="empty-cart-card">
-          <div className="empty-cart-icon">🛒</div>
-          <h2>Your cart is empty</h2>
-          <p>You haven't added any items to your shopping cart yet.</p>
+          <div className="empty-cart-icon">
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.25"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+          </div>
+          <h2>Your Cart is Empty</h2>
+          <p>You have not added any products to your shopping bag yet.</p>
           <Link to="/products" className="btn btn-primary">
-            Start Shopping
+            Browse Products
           </Link>
         </div>
       </div>
@@ -37,8 +52,9 @@ function Cart() {
   return (
     <div className="cart-page">
       <div className="page-header">
-        <h1>Shopping Cart</h1>
-        <p>Review and modify the items in your cart.</p>
+        <span className="page-category-label">Bag & Checkout</span>
+        <h1>Shopping Bag</h1>
+        <p>Review and modify the selected products before proceeding to checkout.</p>
       </div>
 
       <div className="cart-content">
@@ -68,15 +84,15 @@ function Cart() {
                   />
 
                   <div className="cart-item-details">
+                    <span className="cart-item-category">{item.category}</span>
                     <h3 className="cart-item-title">{item.name}</h3>
-                    <p className="cart-item-category">{item.category}</p>
                     <p className="cart-item-unit-price">
-                      Price: ${item.price.toFixed(2)}
+                      ${item.price.toFixed(2)} each
                     </p>
                   </div>
 
                   <div className="cart-item-quantity">
-                    <span className="quantity-label">Quantity:</span>
+                    <span className="quantity-label">Quantity</span>
                     <div className="quantity-controls">
                       <button
                         onClick={() => dispatch(decreaseQuantity(item.id))}
@@ -98,7 +114,7 @@ function Cart() {
                   </div>
 
                   <div className="cart-item-subtotal">
-                    <span className="subtotal-label">Subtotal:</span>
+                    <span className="subtotal-label">Subtotal</span>
                     <span className="subtotal-value">${subtotal.toFixed(2)}</span>
                   </div>
 
@@ -106,7 +122,7 @@ function Cart() {
                     <button
                       onClick={() => dispatch(removeFromCart(item.id))}
                       className="btn-remove"
-                      title="Remove product from cart"
+                      title="Remove product"
                     >
                       Remove
                     </button>
@@ -123,19 +139,19 @@ function Cart() {
             <h2>Order Summary</h2>
 
             <div className="summary-row">
-              <span>Subtotal</span>
+              <span>Items Subtotal</span>
               <span>${totalPrice.toFixed(2)}</span>
             </div>
 
             <div className="summary-row">
-              <span>Estimated Shipping</span>
-              <span className="free-shipping">FREE</span>
+              <span>Standard Delivery</span>
+              <span className="free-shipping">Complimentary</span>
             </div>
 
             <hr className="summary-divider" />
 
             <div className="summary-row total-row">
-              <span>Grand Total</span>
+              <span>Estimated Total</span>
               <span className="grand-total-price">
                 ${totalPrice.toFixed(2)}
               </span>

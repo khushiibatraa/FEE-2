@@ -24,7 +24,8 @@ function App() {
       </main>
       <footer className="footer">
         <div className="footer-content">
-          <p>© {new Date().getFullYear()} ShopEase. B.E. CSE Mini-Project.</p>
+          <span className="footer-brand">ShopEase Studio</span>
+          <p>© {new Date().getFullYear()} ShopEase. Computer Science & Engineering Project.</p>
         </div>
       </footer>
     </div>

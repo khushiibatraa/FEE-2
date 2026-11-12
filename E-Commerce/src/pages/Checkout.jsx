@@ -8,7 +8,7 @@ function Checkout() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
 
-  // Form state for student-friendly checkout simulation
+  // Form state for checkout simulation
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -59,17 +59,36 @@ function Checkout() {
     return (
       <div className="checkout-page order-success-container">
         <div className="order-success-card">
-          <div className="success-icon">🎉</div>
-          <h2>Order Placed Successfully!</h2>
-          <p>Thank you for shopping with ShopEase.</p>
-          <p className="order-details-note">
-            This was a demo checkout. Your cart has been cleared.
+          <div className="success-icon">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+          </div>
+          <h2>Order Confirmed</h2>
+          <p className="order-success-subtitle">
+            Thank you for shopping with ShopEase. Your simulation order has been processed.
           </p>
+          <div className="order-ref-card">
+            <span className="order-ref-label">Reference Number</span>
+            <span className="order-ref-id">
+              SE-{Math.floor(100000 + Math.random() * 900000)}
+            </span>
+          </div>
           <p className="redirect-notice">
-            Redirecting you to the home page in a moment...
+            Returning to the store in a few moments...
           </p>
           <button onClick={() => navigate("/")} className="btn btn-primary">
-            Return to Home Now
+            Return to Storefront
           </button>
         </div>
       </div>
@@ -82,7 +101,7 @@ function Checkout() {
       <div className="checkout-page empty-checkout-container">
         <div className="empty-cart-card">
           <h2>No Items to Checkout</h2>
-          <p>Your shopping cart is currently empty. Please add products first.</p>
+          <p>Your shopping bag is currently empty. Please add items before proceeding.</p>
           <Link to="/products" className="btn btn-primary">
             Browse Products
           </Link>
@@ -94,6 +113,7 @@ function Checkout() {
   return (
     <div className="checkout-page">
       <div className="page-header">
+        <span className="page-category-label">Finalize Purchase</span>
         <h1>Checkout</h1>
         <p>Complete your shipping information to place your order.</p>
       </div>
@@ -101,7 +121,7 @@ function Checkout() {
       <div className="checkout-grid">
         {/* Shipping and Contact Information Form */}
         <div className="checkout-form-section">
-          <h2>Shipping Information</h2>
+          <h2>Shipping Address</h2>
           <form onSubmit={handlePlaceOrder} className="checkout-form">
             <div className="form-group">
               <label htmlFor="fullName">Full Name</label>
@@ -125,12 +145,12 @@ function Checkout() {
                 required
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder="e.g. john@example.com"
+                placeholder="e.g. john@university.edu"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="address">Delivery Address</label>
+              <label htmlFor="address">Delivery Street Address</label>
               <input
                 type="text"
                 id="address"
@@ -138,12 +158,12 @@ function Checkout() {
                 required
                 value={formData.address}
                 onChange={handleInputChange}
-                placeholder="Street address or campus hostel"
+                placeholder="Campus address, street, or apartment"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="city">City / State</label>
+              <label htmlFor="city">City / Region</label>
               <input
                 type="text"
                 id="city"
@@ -156,7 +176,7 @@ function Checkout() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="paymentMethod">Payment Method (Demo)</label>
+              <label htmlFor="paymentMethod">Payment Preference (Demo)</label>
               <select
                 id="paymentMethod"
                 name="paymentMethod"
@@ -164,8 +184,8 @@ function Checkout() {
                 onChange={handleInputChange}
               >
                 <option value="cash_on_delivery">Cash on Delivery (Demo)</option>
-                <option value="upi">UPI / Net Banking (Demo)</option>
-                <option value="card">Credit / Debit Card (Demo)</option>
+                <option value="upi">Direct Transfer / UPI (Demo)</option>
+                <option value="card">Credit or Debit Card (Demo)</option>
               </select>
             </div>
 
@@ -178,14 +198,14 @@ function Checkout() {
         {/* Order Summary Section */}
         <div className="checkout-summary-section">
           <div className="summary-card">
-            <h2>Order Summary</h2>
+            <h2>Order Details</h2>
             <div className="checkout-items-list">
               {cartItems.map((item) => (
                 <div key={item.id} className="checkout-item-row">
                   <div className="checkout-item-info">
                     <span className="checkout-item-name">{item.name}</span>
                     <span className="checkout-item-qty">
-                      Qty: {item.quantity} × ${item.price.toFixed(2)}
+                      {item.quantity} × ${item.price.toFixed(2)}
                     </span>
                   </div>
                   <span className="checkout-item-subtotal">
@@ -203,22 +223,25 @@ function Checkout() {
             </div>
 
             <div className="summary-row">
-              <span>Shipping Fee</span>
-              <span className="free-shipping">FREE</span>
+              <span>Shipping</span>
+              <span className="free-shipping">Complimentary</span>
             </div>
 
             <hr className="summary-divider" />
 
             <div className="summary-row total-row">
-              <span>Total Amount</span>
+              <span>Total Payable</span>
               <span className="grand-total-price">
                 ${totalAmount.toFixed(2)}
               </span>
             </div>
 
-            <p className="demo-notice">
-              ⚠️ Note: This is a demo checkout. No real payment or charges will occur.
-            </p>
+            <div className="demo-notice">
+              <span className="demo-notice-tag">Demo Verification</span>
+              <p>
+                This checkout is a simulation. No financial transaction will take place, and the cart will be reset automatically.
+              </p>
+            </div>
           </div>
         </div>
       </div>

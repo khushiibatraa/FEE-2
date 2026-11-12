@@ -15,6 +15,7 @@ function Navbar() {
     <header className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
+          <span className="brand-dot"></span>
           ShopEase
         </Link>
 

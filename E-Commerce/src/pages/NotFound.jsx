@@ -5,15 +5,15 @@ function NotFound() {
   return (
     <div className="notfound-page">
       <div className="notfound-card">
-        <h1 className="notfound-code">404</h1>
+        <span className="notfound-code">404</span>
         <h2>Page Not Found</h2>
-        <p>The page you are looking for does not exist or has been moved.</p>
+        <p>The requested destination could not be located or has been relocated.</p>
         <div className="notfound-actions">
           <Link to="/" className="btn btn-primary">
-            Back to Home
+            Back to Storefront
           </Link>
           <Link to="/products" className="btn btn-secondary">
-            View Products
+            View Catalog
           </Link>
         </div>
       </div>
